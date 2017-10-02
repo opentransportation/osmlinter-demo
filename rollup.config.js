@@ -1,4 +1,5 @@
 import nodeResolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
 import cleanup from 'rollup-plugin-cleanup'
 
 export default {
@@ -11,6 +12,7 @@ export default {
   globals: {'leaflet': 'L'},
   plugins: [
     nodeResolve(),
-    cleanup()
-  ],
+    cleanup(),
+    commonjs()
+  ]
 }

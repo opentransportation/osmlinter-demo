@@ -2,13 +2,107 @@
 # yarn lockfile v1
 
 
-"@turf/helpers@^5.0.0":
+"@turf/bearing@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/bearing/-/bearing-5.0.0.tgz#448a2d1c7c6fde2b777c79886bf706256758e309"
+  dependencies:
+    "@turf/invariant" "5.0.0"
+
+"@turf/circle@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/circle/-/circle-5.0.0.tgz#d426a7639692e5e8de57e4baf94646e269e71a6a"
+  dependencies:
+    "@turf/destination" "5.0.0"
+    "@turf/helpers" "5.0.0"
+
+"@turf/destination@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/destination/-/destination-5.0.0.tgz#9b1c3fc3bcb4fe631a5cb9e14dbc00baeb788770"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+
+"@turf/distance@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/distance/-/distance-5.0.0.tgz#f4db3dcfa160213fdaaf82b2153e1a479efaba6b"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+
+"@turf/helpers@5.0.0", "@turf/helpers@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@turf/helpers/-/helpers-5.0.0.tgz#732cb570e6aebca9ef7375e8e42fafa8e16e5d47"
 
-"@turf/meta@^5.0.0":
+"@turf/invariant@5.0.0", "@turf/invariant@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-5.0.0.tgz#da9b4d7b044cffa300d654b3e0444969fc19d850"
+
+"@turf/line-intersect@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@turf/line-intersect/-/line-intersect-5.0.3.tgz#a15df3bc99a9cae028532349a4e3a011c1789044"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+    "@turf/line-segment" "5.0.0"
+    "@turf/meta" "5.0.0"
+    geojson-rbush "^2.0.1"
+
+"@turf/line-segment@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/line-segment/-/line-segment-5.0.0.tgz#983569e93eda49b76442def4e5249cd9d0dd79ce"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+    "@turf/meta" "5.0.0"
+
+"@turf/meta@*", "@turf/meta@5.0.0", "@turf/meta@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@turf/meta/-/meta-5.0.0.tgz#75b100e9854cd7b2fa63e68561e1298dac09d7b4"
+
+"@turf/point-on-line@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@turf/point-on-line/-/point-on-line-5.0.3.tgz#cb7d5f99a03a0d6338f6f8e3d4b3cca56b46bd45"
+  dependencies:
+    "@turf/bearing" "5.0.0"
+    "@turf/destination" "5.0.0"
+    "@turf/distance" "5.0.0"
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+    "@turf/line-intersect" "^5.0.3"
+    "@turf/meta" "5.0.0"
+
+"@turf/point-to-line-distance@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/point-to-line-distance/-/point-to-line-distance-5.0.0.tgz#ce5ef069d844469071fed40a6e04ce82ab5259b9"
+  dependencies:
+    "@turf/bearing" "5.0.0"
+    "@turf/distance" "5.0.0"
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+    "@turf/meta" "5.0.0"
+    "@turf/rhumb-bearing" "5.0.0"
+    "@turf/rhumb-distance" "5.0.0"
+
+"@turf/polygon-to-linestring@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/polygon-to-linestring/-/polygon-to-linestring-5.0.0.tgz#6c525b9dea4f76f7cd7785a4752891e74ada8551"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+
+"@turf/rhumb-bearing@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/rhumb-bearing/-/rhumb-bearing-5.0.0.tgz#367b2d70f2c77c7d4c0fa3f7107cdcaff488b23f"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
+
+"@turf/rhumb-distance@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@turf/rhumb-distance/-/rhumb-distance-5.0.0.tgz#254cd96cd1393b2e0889a106e4c5c343b3f3505a"
+  dependencies:
+    "@turf/helpers" "5.0.0"
+    "@turf/invariant" "5.0.0"
 
 acorn-jsx@^3.0.0:
   version "3.0.1"
@@ -486,6 +580,10 @@ estree-walker@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.3.1.tgz#e6b1a51cf7292524e7237c312e5fe6660c1ce1aa"
 
+estree-walker@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.5.0.tgz#aae3b57c42deb8010e349c892462f0e71c5dd1aa"
+
 esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
@@ -608,6 +706,12 @@ generate-object-property@^1.1.0:
   resolved "https://registry.yarnpkg.com/generate-object-property/-/generate-object-property-1.2.0.tgz#9c0e1c40308ce804f4783618b937fa88f99d50d0"
   dependencies:
     is-property "^1.0.0"
+
+geojson-rbush@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/geojson-rbush/-/geojson-rbush-2.0.1.tgz#3b211decf02a6e2c21fb8c3de59b4de5b61679d9"
+  dependencies:
+    "@turf/meta" "*"
 
 get-stdin@^5.0.1:
   version "5.0.1"
@@ -910,7 +1014,7 @@ lodash@^4.0.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-magic-string@*:
+magic-string@*, magic-string@^0.22.4:
   version "0.22.4"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.22.4.tgz#31039b4e40366395618c1d6cf8193c53917475ff"
   dependencies:
@@ -1023,6 +1127,16 @@ optionator@^0.8.2:
 os-homedir@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
+
+osmlinter@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/osmlinter/-/osmlinter-0.4.3.tgz#5f09a15b2429bf59d9af255560f515023e8d0bf6"
+  dependencies:
+    "@turf/helpers" "^5.0.0"
+    "@turf/invariant" "^5.0.0"
+    "@turf/meta" "^5.0.0"
+    "@turf/point-on-line" "^5.0.3"
+    "@turf/point-to-line-distance" "^5.0.0"
 
 p-limit@^1.1.0:
   version "1.1.0"
@@ -1198,7 +1312,7 @@ resolve@1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
-resolve@^1.1.6, resolve@^1.1.7:
+resolve@^1.1.6, resolve@^1.1.7, resolve@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.4.0.tgz#a75be01c53da25d934a98ebd0e4c4a7312f92a86"
   dependencies:
@@ -1225,6 +1339,16 @@ rollup-plugin-cleanup@^1.0.1:
     magic-string "*"
     rollup-pluginutils "*"
 
+rollup-plugin-commonjs@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-commonjs/-/rollup-plugin-commonjs-8.2.1.tgz#5e40c78375eb163c14c76bce69da1750e5905a2e"
+  dependencies:
+    acorn "^5.1.1"
+    estree-walker "^0.5.0"
+    magic-string "^0.22.4"
+    resolve "^1.4.0"
+    rollup-pluginutils "^2.0.1"
+
 rollup-plugin-node-resolve@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-3.0.0.tgz#8b897c4c3030d5001277b0514b25d2ca09683ee0"
@@ -1234,7 +1358,7 @@ rollup-plugin-node-resolve@^3.0.0:
     is-module "^1.0.0"
     resolve "^1.1.6"
 
-rollup-pluginutils@*:
+rollup-pluginutils@*, rollup-pluginutils@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.0.1.tgz#7ec95b3573f6543a46a6461bd9a7c544525d0fc0"
   dependencies:

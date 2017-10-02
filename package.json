@@ -12,11 +12,16 @@
   "license": "MIT",
   "devDependencies": {
     "rollup-plugin-cleanup": "^1.0.1",
+    "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "standard": "^10.0.3"
   },
   "dependencies": {
+    "@turf/circle": "^5.0.0",
     "@turf/helpers": "^5.0.0",
-    "@turf/meta": "^5.0.0"
+    "@turf/invariant": "^5.0.0",
+    "@turf/meta": "^5.0.0",
+    "@turf/polygon-to-linestring": "^5.0.0",
+    "osmlinter": "^0.4.3"
   }
 }

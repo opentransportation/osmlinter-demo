@@ -22,6 +22,6 @@
     "@turf/invariant": "^5.0.0",
     "@turf/meta": "^5.0.0",
     "@turf/polygon-to-linestring": "^5.0.0",
-    "osmlinter": "^0.4.6"
+    "osmlinter": "^0.5.1"
   }
 }

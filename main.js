@@ -1748,12 +1748,20 @@ var validate = function (map$$1, editableLayers, validationLayers) {
     });
     featureEach(closestEndNodes(geojson, {units, maxDistance}), node => {
       const radius = node.properties.distance;
+      const closestPoint = node.properties.closestPoint;
       L.geoJSON(circle(node, radius, {units}), {
         style: {
           color: '#F00',
-          weight: 5,
+          weight: 3,
           opacity: 0.65,
-          fillOpacity: 0.65
+          fillOpacity: 0.25
+        }
+      }).addTo(validationLayers);
+      L.geoJSON(lineString$1([closestPoint, node.geometry.coordinates]).geometry, {
+        style: {
+          color: '#900',
+          weight: 5,
+          opacity: 1
         }
       }).addTo(validationLayers);
       closestEndNodesCounter++;

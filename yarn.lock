@@ -1128,9 +1128,9 @@ os-homedir@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
 
-osmlinter@^0.4.6:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/osmlinter/-/osmlinter-0.4.6.tgz#8c868c0c31f44a6f37b3648aa1ebd061a28dfa08"
+osmlinter@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/osmlinter/-/osmlinter-0.5.1.tgz#decb171f66a14f6bc3d8f413465c035341f31751"
   dependencies:
     "@turf/helpers" "^5.0.0"
     "@turf/invariant" "^5.0.0"

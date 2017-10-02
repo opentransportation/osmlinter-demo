@@ -4,6 +4,7 @@ import { featureEach } from '@turf/meta'
 import { getType } from '@turf/invariant'
 import polygonToLineString from '@turf/polygon-to-linestring'
 import circle from '@turf/circle'
+import { lineString } from '@turf/helpers'
 
 /**
  * Create Editable Layers
@@ -66,14 +67,24 @@ export default function (map, editableLayers, validationLayers) {
     // Closest End Nodes
     featureEach(closestEndNodes(geojson, {units, maxDistance}), node => {
       const radius = node.properties.distance
+      const closestPoint = node.properties.closestPoint
 
       // Red Circle
       L.geoJSON(circle(node, radius, {units}), {
         style: {
           color: '#F00',
-          weight: 5,
+          weight: 3,
           opacity: 0.65,
-          fillOpacity: 0.65
+          fillOpacity: 0.25
+        }
+      }).addTo(validationLayers)
+
+      // Red Line
+      L.geoJSON(lineString([closestPoint, node.geometry.coordinates]).geometry, {
+        style: {
+          color: '#900',
+          weight: 5,
+          opacity: 1
         }
       }).addTo(validationLayers)
       closestEndNodesCounter++

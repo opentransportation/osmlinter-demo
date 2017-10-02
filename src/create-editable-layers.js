@@ -16,7 +16,7 @@ export default function createEditableLayers (map) {
   if (mapObjects) {
     mapObjects = JSON.parse(mapObjects)
     // Set GeoJSON to default if no features exists
-    if (!mapObjects.length) mapObjects = defaultGeojson
+    if (mapObjects.features && !mapObjects.features.length) mapObjects = defaultGeojson
   } else mapObjects = defaultGeojson
 
   // Load Map Objects to Leaflet Layer

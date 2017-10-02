@@ -496,7 +496,7 @@ function createEditableLayers (map$$1) {
   let mapObjects = localStorage.getItem('mapObjects');
   if (mapObjects) {
     mapObjects = JSON.parse(mapObjects);
-    if (!mapObjects.length) mapObjects = geojson;
+    if (mapObjects.features && !mapObjects.features.length) mapObjects = geojson;
   } else mapObjects = geojson;
   if (mapObjects) {
     featureEach(mapObjects, feature => {

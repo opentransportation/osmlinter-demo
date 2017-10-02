@@ -5,10 +5,10 @@
 }(this, (function (L) { 'use strict';
 
 function createMap () {
-  let zoom = localStorage.getItem('mapZoom') || 17;
+  let zoom = localStorage.getItem('mapZoom') || 16;
   let center = localStorage.getItem('mapCenter');
   if (center) center = JSON.parse(center);
-  else center = [42.354142, -71.069776];
+  else center = [42.355451921941906, -71.06820702552797];
   const map$$1 = L.map('app').setView(center, zoom);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 20,

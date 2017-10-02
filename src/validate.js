@@ -18,6 +18,10 @@ export default function (map, editableLayers, validationLayers) {
   map.on(L.Draw.Event.EDITSTOP, validate)
   map.on(L.Draw.Event.CREATED, validate)
   map.on(L.Draw.Event.DELETESTOP, validate)
+  document.getElementById('maxDistance').onchange = validate
+  document.getElementById('maxDistance').onkeyup = validate
+  document.getElementById('minAngle').onchange = validate
+  document.getElementById('minAngle').onkeyup = validate
 
   // Validate on Start
   validate()
@@ -25,13 +29,22 @@ export default function (map, editableLayers, validationLayers) {
   function validate () {
     const geojson = editableLayers.toGeoJSON()
 
+    // Counters
+    let impossibleAngleCounter = 0
+    let closestEndNodesCounter = 0
+
+    // Settings
+    const maxDistance = JSON.parse(document.getElementById('maxDistance').value || 50)
+    const minAngle = JSON.parse(document.getElementById('minAngle').value || 10)
+    const units = 'feet'
+
     // Remove any existing features in validation layer
     validationLayers.clearLayers()
 
     // Impossible Angle
     featureEach(geojson, (feature, featureIndex) => {
       if (getType(feature) !== 'LineString') return
-      if (impossibleAngle(feature)) {
+      if (impossibleAngle(feature, {minAngle})) {
         L.geoJSON(feature.geometry, {
           style: {
             color: '#F00',
@@ -39,6 +52,7 @@ export default function (map, editableLayers, validationLayers) {
             opacity: 0.65
           }
         }).addTo(validationLayers)
+        impossibleAngleCounter++
       }
     })
 
@@ -50,8 +64,6 @@ export default function (map, editableLayers, validationLayers) {
     })
 
     // Closest End Nodes
-    const units = 'feet'
-    const maxDistance = 100
     featureEach(closestEndNodes(geojson, {units, maxDistance}), node => {
       const radius = node.properties.distance
 
@@ -64,6 +76,11 @@ export default function (map, editableLayers, validationLayers) {
           fillOpacity: 0.65
         }
       }).addTo(validationLayers)
+      closestEndNodesCounter++
     })
+
+    // Update Counters
+    document.getElementById('closest-end-nodes-counter').innerHTML = closestEndNodesCounter
+    document.getElementById('impossible-angle-counter').innerHTML = impossibleAngleCounter
   }
 }

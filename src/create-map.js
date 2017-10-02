@@ -14,7 +14,7 @@ export default function createMap () {
   const map = L.map('app').setView(center, zoom)
 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    maxZoom: 18,
+    maxZoom: 20,
     id: 'mapbox.streets',
     attribution: 'Map data &copy <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     accessToken: 'pk.eyJ1IjoiYWRkeHkiLCJhIjoiY2lsdmt5NjZwMDFsdXZka3NzaGVrZDZtdCJ9.ZUE-LebQgHaBduVwL68IoQ'

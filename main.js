@@ -11,7 +11,7 @@ function createMap () {
   else center = [42.354142, -71.069776];
   const map$$1 = L.map('app').setView(center, zoom);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    maxZoom: 18,
+    maxZoom: 20,
     id: 'mapbox.streets',
     attribution: 'Map data &copy <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     accessToken: 'pk.eyJ1IjoiYWRkeHkiLCJhIjoiY2lsdmt5NjZwMDFsdXZka3NzaGVrZDZtdCJ9.ZUE-LebQgHaBduVwL68IoQ'
@@ -280,11 +280,226 @@ function lineString(coordinates, properties) {
     };
 }
 
+const geojson = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.072445,
+            42.35542
+          ],
+          [
+            -71.07075,
+            42.3519
+          ],
+          [
+            -71.071908,
+            42.355293
+          ],
+          [
+            -71.071458,
+            42.35496
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.069419,
+            42.356229
+          ],
+          [
+            -71.065021,
+            42.357164
+          ],
+          [
+            -71.065085,
+            42.358401
+          ],
+          [
+            -71.065139,
+            42.358829
+          ],
+          [
+            -71.068625,
+            42.358861
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.064591,
+            42.352376
+          ],
+          [
+            -71.063926,
+            42.354215
+          ],
+          [
+            -71.063272,
+            42.355293
+          ],
+          [
+            -71.062177,
+            42.356324
+          ],
+          [
+            -71.060407,
+            42.358005
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.061711,
+            42.35433
+          ],
+          [
+            -71.062676,
+            42.354822
+          ],
+          [
+            -71.063266,
+            42.355103
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.061255,
+            42.354778
+          ],
+          [
+            -71.062827,
+            42.355595
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.066029,
+            42.357846
+          ],
+          [
+            -71.073089,
+            42.35634
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.072917,
+            42.357212
+          ],
+          [
+            -71.070288,
+            42.357759
+          ],
+          [
+            -71.069022,
+            42.357949
+          ],
+          [
+            -71.068411,
+            42.357989
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.068046,
+            42.354643
+          ],
+          [
+            -71.066587,
+            42.356356
+          ],
+          [
+            -71.066834,
+            42.355959
+          ],
+          [
+            -71.066544,
+            42.355381
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.063293,
+            42.357719
+          ],
+          [
+            -71.062059,
+            42.356586
+          ]
+        ]
+      }
+    }
+  ]
+};
+
 function createEditableLayers (map$$1) {
   const editableLayers = L.featureGroup();
-  const mapObjects = localStorage.getItem('mapObjects');
+  let mapObjects = localStorage.getItem('mapObjects');
   if (mapObjects) {
-    featureEach(JSON.parse(mapObjects), feature => {
+    mapObjects = JSON.parse(mapObjects);
+    if (!mapObjects.length) mapObjects = geojson;
+  } else mapObjects = geojson;
+  if (mapObjects) {
+    featureEach(mapObjects, feature => {
       const layer = L.geoJSON(feature).getLayers()[0];
       editableLayers.addLayer(layer);
     });
@@ -511,7 +726,8 @@ function findAngle (startPoint, midPoint, endPoint, options) {
 
 function impossibleAngle (lines, options) {
   options = options || {};
-  var threshold = (options.threshold !== undefined) ? options.threshold : 10;
+  var maxAngle = options.maxAngle || Infinity;
+  var minAngle = options.minAngle || 10;
   if (!lines) throw new Error('line is required')
   var isImpossible = false;
   segmentReduce(lines, function (previousSegment, currentSegment, featureIndex, featureSubIndex, segmentIndex) {
@@ -519,7 +735,8 @@ function impossibleAngle (lines, options) {
     var midPoint = getCoords(currentSegment)[0];
     var endPoint = getCoords(currentSegment)[1];
     var angle = findAngle(startPoint, midPoint, endPoint);
-    if (angle < threshold) isImpossible = true;
+    if (angle < minAngle) isImpossible = true;
+    if (angle > maxAngle) isImpossible = true;
     return currentSegment
   });
   return isImpossible
@@ -1498,13 +1715,22 @@ var validate = function (map$$1, editableLayers, validationLayers) {
   map$$1.on(L.Draw.Event.EDITSTOP, validate);
   map$$1.on(L.Draw.Event.CREATED, validate);
   map$$1.on(L.Draw.Event.DELETESTOP, validate);
+  document.getElementById('maxDistance').onchange = validate;
+  document.getElementById('maxDistance').onkeyup = validate;
+  document.getElementById('minAngle').onchange = validate;
+  document.getElementById('minAngle').onkeyup = validate;
   validate();
   function validate () {
     const geojson = editableLayers.toGeoJSON();
+    let impossibleAngleCounter = 0;
+    let closestEndNodesCounter = 0;
+    const maxDistance = JSON.parse(document.getElementById('maxDistance').value || 50);
+    const minAngle = JSON.parse(document.getElementById('minAngle').value || 10);
+    const units = 'feet';
     validationLayers.clearLayers();
     featureEach(geojson, (feature, featureIndex) => {
       if (getType(feature) !== 'LineString') return
-      if (impossibleAngle(feature)) {
+      if (impossibleAngle(feature, {minAngle})) {
         L.geoJSON(feature.geometry, {
           style: {
             color: '#F00',
@@ -1512,6 +1738,7 @@ var validate = function (map$$1, editableLayers, validationLayers) {
             opacity: 0.65
           }
         }).addTo(validationLayers);
+        impossibleAngleCounter++;
       }
     });
     featureEach(geojson, (feature, featureIndex) => {
@@ -1519,8 +1746,6 @@ var validate = function (map$$1, editableLayers, validationLayers) {
         geojson.features[featureIndex] = polygonToLinestring(feature);
       }
     });
-    const units = 'feet';
-    const maxDistance = 100;
     featureEach(closestEndNodes(geojson, {units, maxDistance}), node => {
       const radius = node.properties.distance;
       L.geoJSON(circle(node, radius, {units}), {
@@ -1531,15 +1756,23 @@ var validate = function (map$$1, editableLayers, validationLayers) {
           fillOpacity: 0.65
         }
       }).addTo(validationLayers);
+      closestEndNodesCounter++;
     });
+    document.getElementById('closest-end-nodes-counter').innerHTML = closestEndNodesCounter;
+    document.getElementById('impossible-angle-counter').innerHTML = impossibleAngleCounter;
   }
 };
 
 const map$1 = createMap();
-const editableLayers = createEditableLayers(map$1);
 const validationLayers = createValidationLayers(map$1);
+const editableLayers = createEditableLayers(map$1);
 createDrawControl(map$1, editableLayers);
 addListeners(map$1);
 validate(map$1, editableLayers, validationLayers);
+var overlayMaps = {
+  Features: editableLayers,
+  Validation: validationLayers
+};
+L.control.layers({}, overlayMaps, {position: 'topleft'}).addTo(map$1);
 
 })));

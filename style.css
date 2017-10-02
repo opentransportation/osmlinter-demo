@@ -11,26 +11,34 @@ body {
   display: flex;
   flex-direction: column;
 }
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
 #instructions {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   position: absolute;
-  color: darkslategrey;
+  color: #264B4B;
   left: 30%;
   right: 30%;
-  top: 0.0em;
+  min-width: 40%;
+  top: 0em;
+  padding: 0em;
+  margin: 0em;
   text-align: center;
-  background-color: rgba(93, 209, 46, 0.8);
+  background-color: rgba(240, 254, 234, 0.8);
   z-index: 1000;
 }
 #counters {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   position: absolute;
-  color: darkslategrey;
+  font-weight: bold;
   left: 30%;
   right: 30%;
-  bottom: 0.0em;
+  min-width: 40%;
+  bottom: 0;
   text-align: center;
-  background-color: rgba(93, 209, 46, 0.8);
+  background-color: rgba(240, 254, 234, 0.8);
   z-index: 1000;
 }
 #author {
@@ -41,4 +49,9 @@ body {
   bottom: 0;
   padding: 0.5em;
   z-index: 1000;
+}
+.counter {
+  font-size: 2em;
+  font-weight: bolder;
+  color: red;
 }

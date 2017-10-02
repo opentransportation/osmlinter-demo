@@ -12,13 +12,19 @@
   <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw-src.js"></script>
 </head>
 <body>
-<!-- <h1 id="instructions">
-  Left Click + Move Mouse<br/>
-  <a href="https://github.com/turfjs/turf">@turf/clusters-dbscan</a><br/>
-</h1> -->
+<div id="instructions">
+  <h1><a href="https://github.com/opentransportation/osmlinter">OSMLinter</a></h1>
+  <h2>Validation Settings:</h2><br/>
+  Max Distance <input type="text" id="maxDistance" value=50> (feet)<br/>
+  Min Angle <input type="text" id="minAngle" value=10> (degrees)<br/><br/>
+</div>
 <div id="app"></div>
-<!-- <h2 id="counters">Points: 0, Clusters: 0, Distance: 1000m</h2>
-<div id="author">Created by <a href="https://twitter.com/DenisCarriere">DenisCarriere</a></div> -->
+<div id="author">Created by <a href="https://twitter.com/DenisCarriere">DenisCarriere</a></div>
+
+<div id="counters">
+  Impossible Angles: <span class="counter" id="impossible-angle-counter">0</span><br/>
+  Closest End Nodes: <span class="counter" id="closest-end-nodes-counter">0</span>
+</div>
 <script src='main.js'></script>
 </body>
 </html>

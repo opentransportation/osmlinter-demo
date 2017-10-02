@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "osmlinter-demo",
+  "version": "1.0.0",
+  "description": "OSMLinter Demo Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "rollup -c rollup.config.js",
+    "watch": "rollup --watch -c rollup.config.js"
+  },
+  "author": "Denis Carriere <@DenisCarriere>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup-plugin-cleanup": "^1.0.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "@turf/helpers": "^5.0.0",
+    "@turf/meta": "^5.0.0"
+  }
+}
